@@ -19,6 +19,7 @@ import entities.Entity;
 import entities.Player;
 import entities.Player2;
 import entities.Player3;
+import graficos.Cronometro;
 import graficos.Spritesheet;
 import graficos.UI;
 import world.World;
@@ -51,6 +52,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	
 	public UI ui;
 	
+	private Cronometro cronometro;
+	
 	// private Graphics2D g2;
 	/***/
 
@@ -58,6 +61,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public Game() {
 		
 		rand = new Random();
+		
+		//instanciando cronometro
+		cronometro = new Cronometro();
 		
 		// Para que os eventos de teclado funcionem
 		addKeyListener(this);
@@ -97,6 +103,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		thread = new Thread(this);
 		isRunning = true;
 		thread.start();
+		cronometro.start();
 	}
 
 	public synchronized void stop() {
@@ -106,6 +113,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		cronometro.parar();
+		
+	}
+	
+	public long getTempo() {
+		return cronometro.getTempo();
 	}
 
 	public static void main(String[] args) {
@@ -137,6 +151,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
 
 		world.render(g);
+		
+		// Cronometro na tela
+		int tempo = (int) (getTempo() / 1000);
+		g.setColor(Color.white);
+		g.drawString(Integer.toString(tempo), 220, 20);
+		
+		
 		
 		/* Render do jogo */
 		// g2 = (Graphics2D) g; //Transformei em um tipo g e foi feito um cast com o
