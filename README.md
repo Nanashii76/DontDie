@@ -1,4 +1,5 @@
 # DontDie
+###
 - Seja Bem-vindo a experiência de Dont Die!!
 
 <center>
@@ -10,4 +11,8 @@
 <img width="700" height="400" src="assets/2023-05-04 19-48-38.gif">
  </p>
 <p> Jogo Criado como projeto da Turma de Orientação a Objetos de 2023.1, o jogo ainda não está completo e receberá atualizações </p>
+
+###
+- Para jogar o jogo, basta clonar o repositório e baixar o java DevTool clicando neste link <a href="https://www.oracle.com/java/technologies/downloads/?er=221886#jdk22-windows"> aqui </a>
+
 </center>
